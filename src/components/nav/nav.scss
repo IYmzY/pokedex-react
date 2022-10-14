@@ -1,0 +1,19 @@
+.nav-container {
+  width: 100vw;
+  height: 12vh;
+  background-color: #96031a;
+  padding: 1rem 1.5rem;
+  h1 {
+    height: 100%;
+    display: flex;
+    color: #fbfffe;
+    justify-content: flex-start;
+    align-items: center;
+    img {
+      height: 100%;
+    }
+    span {
+      font-size: 3rem;
+    }
+  }
+}
