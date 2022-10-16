@@ -2,6 +2,7 @@ import "./App.scss";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Nav from "./components/nav/nav";
+import PokemonContext from "./providers/pokemon.provider";
 import PokemonList from "./components/pokemonList/pokemonList";
 import { Pokemon } from "./container/pokemon";
 
@@ -12,7 +13,6 @@ interface Pokemons {
 
 const App: React.FC = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-  const [nextUrl, setNextUrl] = useState<string>("");
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -20,30 +20,17 @@ const App: React.FC = () => {
         "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
       );
 
-      setNextUrl(res.data.next);
-
       res.data.results.forEach(async (pokemon: Pokemons) => {
         const poke = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
+          // `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
+          pokemon.url
         );
+        console.log(poke.data.id);
         setPokemons((p) => [...p, poke.data]);
       });
     };
     getPokemon();
   }, []);
-
-  const nextPage = async () => {
-    let res = await axios.get(nextUrl);
-
-    setNextUrl(res.data.next);
-
-    res.data.results.forEach(async (pokemon: Pokemons) => {
-      const poke = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
-      );
-      setPokemons((p) => [...p, poke.data]);
-    });
-  };
 
   return (
     <div className="App">
@@ -51,8 +38,9 @@ const App: React.FC = () => {
         <header className="pokemon-header">
           <Nav></Nav>
         </header>
-        <PokemonList pokemons={pokemons} />
-        <button onClick={nextPage}>Charger</button>
+        <PokemonContext.Provider value={pokemons}>
+          <PokemonList />
+        </PokemonContext.Provider>
       </div>
     </div>
   );
