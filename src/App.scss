@@ -1,6 +1,10 @@
+body {
+  padding: 0;
+  margin: 0;
+}
 .main-container {
   background-color: black;
-  overflow-x: hidden;
+  overflow: hidden;
   height: auto;
   width: 100%;
   color: #fbfffe;
@@ -8,5 +12,7 @@
   App {
     width: auto;
     height: auto;
+    padding: 0;
+    margin: 0;
   }
 }

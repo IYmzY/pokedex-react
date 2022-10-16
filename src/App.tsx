@@ -25,7 +25,6 @@ const App: React.FC = () => {
           // `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
           pokemon.url
         );
-        console.log(poke.data.id);
         setPokemons((p) => [...p, poke.data]);
       });
     };

@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import { createContext } from "react";
 import { Pokemon } from "../container/pokemon";
 
 // const PokemonContext = createContext({});
@@ -7,6 +7,6 @@ import { Pokemon } from "../container/pokemon";
 //   return <PokemonContext.Provider value={""}></PokemonContext.Provider>;
 // };
 
-const PokemonContext = React.createContext(<Pokemon[]>[]);
+const PokemonContext = createContext(<Pokemon[]>[]);
 
 export default PokemonContext;

@@ -2,4 +2,23 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  .pokemon-card {
+    height: 15rem;
+    background-color: red;
+    width: 6.5rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-transform: capitalize;
+    font-size: 1rem;
+    position: relative;
+    padding: 2rem;
+  }
+  button {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    font-size: 1.2rem;
+  }
 }

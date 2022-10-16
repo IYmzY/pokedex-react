@@ -1,13 +1,4 @@
 import "./pokemonCard.scss";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
 
 interface Props {
   name: string;
